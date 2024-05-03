@@ -24,9 +24,18 @@ export class PhotoGalleryService {
     );
   }
   searchGallery(termo: string): Observable<Galeria[]> {
-    const url = `${this.apiUrl}?badge=${termo}`;
+    const url = `${this.apiUrl}?title=${termo}`;
     return this.http.get<Galeria[]>(url);
   }
-
+  excluirItem(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url).pipe(
+      tap(() => console.log(`Item com ID ${id} excluído com sucesso`)),
+      catchError(error => {
+        console.error(`Erro ao excluir item com ID ${id}:`, error);
+        return throwError(error);
+      })
+    );
+  }
 
 }

@@ -1,3 +1,37 @@
+.search{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 15px;
+  align-items: center;"
+}
+.center-search{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+.term-search{
+  padding: 10px;
+  border: 1px solid #ced4da;
+  flex-grow: 1
+}
+.result{
+  padding: 10px;
+  border: 1px solid #d3d3d3;
+  height: 38px;
+  width: 42px;
+  background-color: #fff;
+  color: #6c757da6;
+  position: relative;
+}
+.find{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
 .input-container {
   display: flex;
   justify-content: center;

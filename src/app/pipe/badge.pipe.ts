@@ -7,10 +7,8 @@ import { GaleriaEnum } from '../modelo/galeria.enum';
 })
 
 export class BadgePipe implements PipeTransform {
-
   transform(value: string): any {
 
     return GaleriaEnum[+value]
   }
-
 }

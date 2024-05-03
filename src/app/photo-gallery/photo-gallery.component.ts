@@ -28,24 +28,25 @@ export class PhotoGalleryComponent implements OnInit {
   }
 
   getCardList() {
-    this.photoGallery.getCardList().subscribe(
-      (data: Galeria[]) => {
-        console.log('Dados da galeria:', data);
-        this.galleryItems = data;
-      },
-      (error) => {
-        console.log('Erro ao obter a lista de imagens:', error);
-      }
-    );
+    this.galerias$ = this.photoGallery.getCardList();
   }
 
   pesquisar(termoPesquisa: string): void {
-    console.log('Função pesquisar() chamada com termo:', termoPesquisa);
     if (termoPesquisa && termoPesquisa.trim()) {
       this.galerias$ = this.photoGallery.searchGallery(termoPesquisa);
     } else {
       this.getCardList();
     }
+  }
+  excluirItem(id: number): void {
+    this.photoGallery.excluirItem(id).subscribe(
+      () => {
+        this.getCardList();
+      },
+      error => {
+        console.error('Erro ao excluir item:', error);
+      }
+    );
   }
 
 }
