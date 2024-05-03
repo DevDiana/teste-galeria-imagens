@@ -24,7 +24,7 @@ export class PhotoGalleryService {
     );
   }
   searchGallery(termo: string): Observable<Galeria[]> {
-    const url = `${this.apiUrl}?title=${termo}`;
+    const url = `${this.apiUrl}?badge=${termo}`;
     return this.http.get<Galeria[]>(url);
   }
 

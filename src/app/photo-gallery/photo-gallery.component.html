@@ -2,13 +2,17 @@
   <div style="display: flex; justify-content: center; width: 100%; padding-top: 5px; align-items: center;">
     <div style="display: flex; align-items: center; justify-content: center; width: 60%;">
       <input type="text" id="termoPesquisa" style="padding: 10px; border: 1px solid #ced4da;  flex-grow: 1;" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" [(ngModel)]="termoPesquisa">
-      <button (click)="pesquisar(termoPesquisa)" style="padding: 10px; border: 1px solid #d3d3d3; height: 38px; width: 42px; background-color: #fff; color: #6c757da6; position: relative;" id="button-addon1"></button>
+      <button (click)="pesquisar(termoPesquisa)" style="padding: 10px; border: 1px solid #d3d3d3; height: 38px; width: 42px; background-color: #fff; color: #6c757da6; position: relative;" id="button-addon1">
+        <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 20px;">
+          <i class="fas fa-search"></i>
+        </span>
+      </button>
     </div>
   </div>
 
   <div class="gallery">
     <div *ngIf="galerias$">
-      <div *ngFor="let item of galerias$ | async"  class="gallery-item">
+      <div *ngFor="let item of galerias$ | async" class="gallery-item">
         <div class="custom-card">
           <button class="close-icon">
             <img src="../../assets/images/close.svg" alt="Fechar">
@@ -26,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!galerias$">
+    <div *ngIf="!galerias$ || (galerias$ | async)?.length === 0">
       <div *ngFor="let item of galleryItems" class="gallery-item">
         <div class="custom-card">
           <button class="close-icon">

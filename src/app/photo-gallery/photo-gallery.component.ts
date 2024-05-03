@@ -34,17 +34,18 @@ export class PhotoGalleryComponent implements OnInit {
         this.galleryItems = data;
       },
       (error) => {
-        console.log('Erro ao obter a lista de cartões:', error);
+        console.log('Erro ao obter a lista de imagens:', error);
       }
     );
   }
 
   pesquisar(termoPesquisa: string): void {
     console.log('Função pesquisar() chamada com termo:', termoPesquisa);
-    if (termoPesquisa.trim()) {
+    if (termoPesquisa && termoPesquisa.trim()) {
       this.galerias$ = this.photoGallery.searchGallery(termoPesquisa);
     } else {
       this.getCardList();
     }
   }
+
 }
