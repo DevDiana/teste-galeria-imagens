@@ -4,20 +4,18 @@ import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { Galeria } from '../app/modelo/galeria.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PhotoGalleryService {
-
   private apiUrl = 'http://localhost:3000/galerias';
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   getCardList(): Observable<Galeria[]> {
     console.log('Fazendo solicitação para:', this.apiUrl);
     return this.http.get<Galeria[]>(this.apiUrl).pipe(
-      tap(data => console.log('Resposta da solicitação:', data)),
-      catchError(error => {
+      tap((data) => console.log('Resposta da solicitação:', data)),
+      catchError((error) => {
         console.error('Erro na solicitação:', error);
         return of([]);
       })
@@ -31,11 +29,10 @@ export class PhotoGalleryService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url).pipe(
       tap(() => console.log(`Item com ID ${id} excluído com sucesso`)),
-      catchError(error => {
+      catchError((error) => {
         console.error(`Erro ao excluir item com ID ${id}:`, error);
         return throwError(error);
       })
     );
   }
-
 }
